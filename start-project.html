@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<script>document.documentElement.classList.add('js')</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ابدأ مشروعك — SKIP</title>
+<meta name="description" content="عبّي نموذج بدء المشروع وفريق سكيب بيتواصل معك لنبدأ رحلة نمو علامتك.">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#f7f5ef">
+
+<link rel="icon" href="assets/images/logo-removebg-preview.png" media="(prefers-color-scheme: light)">
+<link rel="icon" href="assets/images/logo-removebg-preview.png" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="assets/images/logo-removebg-preview.png" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/images/logo-removebg-preview.png">
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/forms.css">
+<link rel="stylesheet" href="css/start-project.css">
+</head>
+<body class="antialiased" data-page="start-project">
+<main dir="rtl" class="site-shell">
+  <span class="scroll-sentinel" id="scroll-sentinel" aria-hidden="true"></span>
+
+  <header class="site-header">
+    <a class="brand-mark" href="index.html#top" aria-label="SKIP الرئيسية"><img src="assets/images/logo-removebg-preview.png" alt="شعار SKIP" width="128" height="48"></a>
+
+    <nav class="desktop-nav" aria-label="التنقل الرئيسي">
+      <a href="index.html#top">الرئيسية</a>
+      <a href="index.html#section-1">من نحن</a>
+      <a href="index.html#section-2">خدماتنا</a>
+      <a href="index.html#work">أعمالنا</a>
+      <a href="index.html#section-5">منهجيتنا</a>
+      <a href="index.html#contact">تواصل معنا</a>
+    </nav>
+
+    <div class="header-actions">
+      <a class="text-link creative-link" href="join-team.html">انضم لفريقنا</a>
+      <a class="button button-dark" href="#start-form">ابدأ مشروعك <span>↗</span></a>
+      <button class="menu-toggle" type="button" id="menu-toggle" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <nav id="mobile-menu" class="mobile-menu" aria-label="قائمة الهاتف">
+      <a href="index.html#top" data-menu-link>الرئيسية</a>
+      <a href="index.html#section-1" data-menu-link>من نحن</a>
+      <a href="index.html#section-2" data-menu-link>خدماتنا</a>
+      <a href="index.html#work" data-menu-link>أعمالنا</a>
+      <a href="index.html#section-5" data-menu-link>منهجيتنا</a>
+      <a href="index.html#contact" data-menu-link>تواصل معنا</a>
+      <a href="join-team.html" data-menu-link>انضم لفريقنا</a>
+      <a href="#start-form" data-menu-link>ابدأ مشروعك</a>
+    </nav>
+  </header>
+
+  <section class="start-hero">
+    <div class="start-hero-visual" aria-hidden="true">
+      <img src="assets/images/hero logo.png" alt="" loading="eager" fetchpriority="high" decoding="async">
+    </div>
+    <div class="start-hero-copy">
+      <p class="section-index"><span class="index-dot"></span>ابدأ مشروعك</p>
+      <h1>خلّنا نسمع<br><span>عن مشروعك.</span></h1>
+      <p class="start-lead">عبّي النموذج بمعلومات مشروعك، وفريقنا بيتواصل معك خلال يوم عمل واحد لنبدأ رحلة نمو علامتك.</p>
+    </div>
+  </section>
+
+  <section class="form-section section-pad" id="start-form">
+    <form id="project-form" novalidate data-reveal>
+      <div class="form-grid">
+
+        <div class="field">
+          <label for="f-name">اسمك <span class="req">*</span></label>
+          <input type="text" id="f-name" name="name" placeholder="عبدالله محمد" autocomplete="name" required aria-describedby="err-name">
+          <p class="field-error" id="err-name" role="alert"></p>
+        </div>
+
+        <div class="field">
+          <label for="f-phone">رقم جوالك <span class="req">*</span></label>
+          <div class="phone-field">
+            <div class="select-wrap select-wrap--code">
+              <select id="f-phone-code" name="phoneCode" aria-label="مفتاح الدولة">
+                <option value="966" selected>السعودية ‎+966</option>
+                <option value="971">الإمارات ‎+971</option>
+                <option value="965">الكويت ‎+965</option>
+                <option value="973">البحرين ‎+973</option>
+                <option value="974">قطر ‎+974</option>
+                <option value="968">عُمان ‎+968</option>
+              </select>
+            </div>
+            <input type="tel" id="f-phone" name="phone" placeholder="5xxxxxxxx" inputmode="numeric" autocomplete="tel" required aria-describedby="err-phone">
+          </div>
+          <p class="field-error" id="err-phone" role="alert"></p>
+        </div>
+
+        <div class="field">
+          <label for="f-email">البريد الإلكتروني <span class="req">*</span></label>
+          <input type="email" id="f-email" name="email" placeholder="name@email.com" autocomplete="email" required aria-describedby="err-email">
+          <p class="field-error" id="err-email" role="alert"></p>
+        </div>
+
+        <div class="field">
+          <label for="f-job">المسمى الوظيفي <span class="req">*</span></label>
+          <input type="text" id="f-job" name="jobTitle" placeholder="مدير عام" autocomplete="organization-title" required aria-describedby="err-jobTitle">
+          <p class="field-error" id="err-jobTitle" role="alert"></p>
+        </div>
+
+        <div class="field">
+          <label for="f-url">رابط المتجر <span class="req">*</span></label>
+          <input type="text" id="f-url" name="storeUrl" placeholder="https://" inputmode="url" required aria-describedby="err-storeUrl">
+          <p class="field-error" id="err-storeUrl" role="alert"></p>
+        </div>
+
+        <div class="field">
+          <label for="f-age">عمر المتجر <span class="req">*</span></label>
+          <div class="select-wrap">
+            <select id="f-age" name="storeAge" required aria-describedby="err-storeAge">
+              <option value="" selected disabled hidden>سنوات</option>
+              <option value="less-1">أقل من سنة</option>
+              <option value="1-3">من ١ إلى ٣ سنوات</option>
+              <option value="3-5">من ٣ إلى ٥ سنوات</option>
+              <option value="more-5">أكثر من ٥ سنوات</option>
+            </select>
+          </div>
+          <p class="field-error" id="err-storeAge" role="alert"></p>
+        </div>
+
+        <div class="field field-wide">
+          <label for="f-budget">الميزانية التسويقية الشهرية <span class="req">*</span></label>
+          <div class="select-wrap">
+            <select id="f-budget" name="budget" required aria-describedby="err-budget">
+              <option value="" selected disabled hidden>كم تصرف تقريبًا على التسويق شهريًا؟</option>
+              <option value="under-5k">أقل من ٥,٠٠٠ ريال</option>
+              <option value="5k-15k">من ٥,٠٠٠ إلى ١٥,٠٠٠ ريال</option>
+              <option value="15k-50k">من ١٥,٠٠٠ إلى ٥٠,٠٠٠ ريال</option>
+              <option value="over-50k">أكثر من ٥٠,٠٠٠ ريال</option>
+            </select>
+          </div>
+          <p class="field-error" id="err-budget" role="alert"></p>
+        </div>
+
+        <div class="field field-wide">
+          <label for="f-sales">المبيعات الشهرية <span class="req">*</span></label>
+          <div class="select-wrap">
+            <select id="f-sales" name="sales" required aria-describedby="err-sales">
+              <option value="" selected disabled hidden>اختر متوسط مبيعاتك الشهرية</option>
+              <option value="under-20k">أقل من ٢٠,٠٠٠ ريال</option>
+              <option value="20k-100k">من ٢٠,٠٠٠ إلى ١٠٠,٠٠٠ ريال</option>
+              <option value="100k-500k">من ١٠٠,٠٠٠ إلى ٥٠٠,٠٠٠ ريال</option>
+              <option value="over-500k">أكثر من ٥٠٠,٠٠٠ ريال</option>
+            </select>
+          </div>
+          <p class="field-error" id="err-sales" role="alert"></p>
+        </div>
+
+        <div class="field">
+          <label for="f-work-mode">تشتغل مع وكالة او فريق داخلي؟ <span class="req">*</span></label>
+          <div class="select-wrap">
+            <select id="f-work-mode" name="workMode" required aria-describedby="err-workMode">
+              <option value="" selected disabled hidden>اختر طريقة عملك الحالية</option>
+              <option value="agency">وكالة تسويق خارجية</option>
+              <option value="internal">فريق تسويق داخلي</option>
+              <option value="none">لا أحد حاليًا</option>
+            </select>
+          </div>
+          <p class="field-error" id="err-workMode" role="alert"></p>
+        </div>
+
+        <div class="field">
+          <label for="f-source">من وين عرفت عن سكيب؟ <span class="req">*</span></label>
+          <div class="select-wrap">
+            <select id="f-source" name="source" required aria-describedby="err-source">
+              <option value="" selected disabled hidden>كيف وصلت لنا؟</option>
+              <option value="instagram">إنستقرام</option>
+              <option value="tiktok">تيك توك</option>
+              <option value="x">X (تويتر)</option>
+              <option value="linkedin">لينكدإن</option>
+              <option value="google">جوجل / بحث</option>
+              <option value="referral">توصية من صديق</option>
+              <option value="other">طريقة أخرى</option>
+            </select>
+          </div>
+          <p class="field-error" id="err-source" role="alert"></p>
+        </div>
+
+      </div>
+
+      <button type="submit" class="button submit-btn" id="submit-btn">
+        <span class="btn-label">أرسل الطلب الآن</span>
+        <span>↗</span>
+      </button>
+    </form>
+
+    <div class="form-success" id="form-success" hidden>
+      <div class="success-icon" aria-hidden="true">✓</div>
+      <h2>تم استلام طلبك!</h2>
+      <p>وصلتنا كل التفاصيل، وفريقنا بيتواصل معك خلال يوم عمل واحد لنبدأ رحلة مشروعك.</p>
+      <a href="index.html" class="text-link">الرجوع للرئيسية ↗</a>
+    </div>
+  </section>
+
+  <footer id="join" class="site-footer">
+    <div class="footer-top">
+      <img src="assets/images/logo-removebg-preview.png" alt="شعار SKIP" width="54" height="58">
+      <p>وكالة إبداعية<br>تشتغل بذكاء.</p>
+      <a class="button button-yellow" href="join-team.html">انضم لفريقنا <span>↗</span></a>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-nav">
+        <a href="index.html#top">الرئيسية</a>
+        <a href="index.html#section-1">من نحن</a>
+        <a href="index.html#section-2">خدماتنا</a>
+        <a href="index.html#work">أعمالنا</a>
+        <a href="index.html#section-5">منهجيتنا</a>
+        <a href="index.html#contact">تواصل معنا</a>
+      </div>
+      <div class="footer-contact">
+        <a href="mailto:hello@skip.sa">hello@skip.sa</a>
+        <span>الرياض، المملكة العربية السعودية</span>
+      </div>
+      <div class="socials">
+        <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://tiktok.com" target="_blank" rel="noopener">TikTok</a>
+        <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://x.com" target="_blank" rel="noopener">X</a>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <span>© SKIP 2024</span>
+      <span>صنع في الرياض، بحب.</span>
+    </div>
+  </footer>
+
+  <a class="whatsapp" href="https://wa.me/966500000000" aria-label="تواصل معنا عبر واتساب">
+    <img src="https://cdn.simpleicons.org/whatsapp/ffffff" alt="" width="24" height="24">
+  </a>
+
+</main>
+
+<script src="js/main.js" defer></script>
+<script src="js/start-project.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+/* ==========================================================================
+   START PROJECT PAGE — "ابدأ مشروعك" inquiry form.
+   Shared form primitives live in css/forms.css; this file only holds the
+   bits unique to this page (the phone number + country code field).
+   ========================================================================== */
+
+.phone-field {
+  display: grid;
+  gap: .6rem;
+  grid-template-columns: auto 1fr;
+}
+.phone-field .select-wrap { width: auto; }
+.phone-field .select-wrap select {
+  font-size: 13px;
+  padding-left: 32px;
+  padding-right: 14px;
+  width: auto;
+}
+.phone-field input { min-width: 0; }
+
+@media (max-width: 520px) {
+  .phone-field { grid-template-columns: 1fr; }
+  .phone-field .select-wrap { width: 100%; }
+  .phone-field .select-wrap select { width: 100%; }
+}

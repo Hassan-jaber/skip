@@ -1,0 +1,278 @@
+/* ==========================================================================
+   JOIN TEAM PAGE — "انضم لفريقنا" recruitment form.
+   Shared form primitives live in css/forms.css; this file only holds the
+   bits unique to this page: the group label, the expertise chip grid, the
+   career-preference radio group, and the CV upload dropzone.
+   ========================================================================== */
+
+/* ---------- hero feature badges + CTA (join-team hero only) ---------- */
+
+.start-hero-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .65rem;
+  margin: 2.5rem 0 0;
+}
+.hero-badge {
+  align-items: center;
+  background: rgba(255, 255, 255, .06);
+  border: 1px solid rgba(255, 255, 255, .14);
+  border-radius: 999px;
+  color: rgba(255, 255, 255, .88);
+  display: inline-flex;
+  font-size: 13px;
+  gap: .55rem;
+  padding: 10px 16px;
+}
+.hero-badge svg { color: var(--red); flex-shrink: 0; height: 16px; width: 16px; }
+
+.start-hero-cta { margin-top: 2.5rem; }
+
+.group-label {
+  align-items: center;
+  color: var(--black);
+  display: flex;
+  font-size: 14px;
+  font-weight: 700;
+  gap: .35rem;
+  line-height: 1.5;
+  margin-bottom: .9rem;
+}
+
+/* ---------- expertise chip multi-select ---------- */
+
+.chip-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .65rem;
+}
+
+.chip-option { display: inline-flex; }
+
+.chip-option input[type="checkbox"] {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.chip-option label {
+  align-items: center;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, .14);
+  border-radius: 999px;
+  color: var(--black);
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 13px;
+  font-weight: 500;
+  gap: .5rem;
+  padding: 10px 18px;
+  transition: background .2s ease, border-color .2s ease, color .2s ease, transform .2s ease;
+  user-select: none;
+}
+
+.chip-option label svg {
+  flex-shrink: 0;
+  height: 16px;
+  width: 16px;
+}
+
+.chip-option label:hover { border-color: rgba(0, 0, 0, .32); }
+
+.chip-option input[type="checkbox"]:checked + label {
+  background: var(--black);
+  border-color: var(--black);
+  color: white;
+}
+
+.chip-option input[type="checkbox"]:focus-visible + label {
+  outline: 2px solid var(--red);
+  outline-offset: 2px;
+}
+
+/* ---------- career preference radio group ---------- */
+
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+}
+
+.radio-option {
+  align-items: flex-start;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, .14);
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  gap: .85rem;
+  padding: 14px 18px;
+  transition: border-color .2s ease, background .2s ease, transform .15s ease;
+}
+
+.radio-option:hover { border-color: rgba(0, 0, 0, .32); }
+
+.radio-option input[type="radio"] {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.radio-dot {
+  background: #fff;
+  border: 1.5px solid rgba(0, 0, 0, .32);
+  border-radius: 50%;
+  flex-shrink: 0;
+  height: 20px;
+  margin-top: 2px;
+  position: relative;
+  transition: border-color .2s ease;
+  width: 20px;
+}
+
+.radio-dot::after {
+  background: var(--red);
+  border-radius: 50%;
+  content: '';
+  height: 10px;
+  left: 50%;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(.4);
+  transition: opacity .15s ease, transform .15s ease;
+  width: 10px;
+}
+
+.radio-option span:last-child {
+  color: var(--black);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.radio-option input[type="radio"]:checked ~ .radio-dot { border-color: var(--red); }
+.radio-option input[type="radio"]:checked ~ .radio-dot::after { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+.radio-option:has(input[type="radio"]:checked) {
+  background: rgba(239, 28, 37, .05);
+  border-color: var(--red);
+}
+
+.radio-option input[type="radio"]:focus-visible ~ .radio-dot {
+  outline: 2px solid var(--red);
+  outline-offset: 2px;
+}
+
+/* ---------- CV upload dropzone ---------- */
+
+.upload-drop { position: relative; }
+
+.upload-drop input[type="file"] {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.upload-label {
+  align-items: center;
+  background: #fff;
+  border: 1.5px dashed rgba(0, 0, 0, .24);
+  border-radius: 14px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: .6rem;
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  transition: background .2s ease, border-color .2s ease, transform .15s ease;
+}
+
+.upload-label:hover { border-color: var(--red); }
+
+.upload-drop.is-dragover .upload-label {
+  background: rgba(239, 28, 37, .05);
+  border-color: var(--red);
+}
+
+.upload-drop.has-error .upload-label { border-color: var(--red); }
+
+.upload-icon {
+  color: var(--black);
+  height: 30px;
+  width: 30px;
+}
+
+.upload-text {
+  color: var(--black);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.upload-hint {
+  color: rgba(0, 0, 0, .5);
+  font-size: 12px;
+}
+
+.upload-filename {
+  align-items: center;
+  color: var(--black);
+  display: none;
+  font-size: 13px;
+  font-weight: 700;
+  gap: .4rem;
+  margin: .85rem 0 0;
+}
+
+.upload-filename::before {
+  color: var(--red);
+  content: '✓';
+}
+
+.upload-filename.is-visible { display: flex; }
+
+@media (max-width: 520px) {
+  .chip-option label { font-size: 12.5px; padding: 9px 14px; }
+  .radio-option { padding: 12px 14px; }
+  .upload-label { padding: 2rem 1rem; }
+}
+
+/* ==========================================================================
+   INTERACTION POLISH — a tiny "pop" when a chip/radio is selected, and a
+   matching hover lift on the chips. Covered by style.css's global
+   prefers-reduced-motion rule (collapses animation/transition durations).
+   ========================================================================== */
+.chip-option label:hover { transform: translateY(-1px); }
+.chip-option label:active { transform: translateY(0) scale(.97); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .chip-option input[type="checkbox"]:checked + label { animation: chip-pop .28s cubic-bezier(.34,1.56,.64,1); }
+}
+@keyframes chip-pop { 0% { transform: scale(1); } 45% { transform: scale(1.055); } 100% { transform: scale(1); } }
+
+.radio-option:active { transform: scale(.99); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .radio-dot::after { transition: opacity .18s ease, transform .25s cubic-bezier(.34,1.56,.64,1); }
+}
+
+.upload-label:active { transform: scale(.99); }
+.upload-filename.is-visible {
+  animation: field-error-in .3s ease both; /* defined in forms.css; simple fade+rise */
+}
