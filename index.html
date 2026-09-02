@@ -34,10 +34,6 @@
       href="assets/images/logo-removebg-preview.png"
     />
 
-    <link
-      rel="preconnect"
-      href="https://hebbkx1anhila5yf.public.blob.vercel-storage.com"
-    />
     <link rel="preconnect" href="https://images.unsplash.com" />
     <link rel="dns-prefetch" href="https://cdn.simpleicons.org" />
 
@@ -101,48 +97,93 @@
       </header>
 
       <section id="top" class="hero-section">
-        <div class="hero-copy">
-          <div class="hero-intro" data-reveal-group>
-            <p class="eyebrow">
-              وكالة إبداعية رقمية من الرياض <span>—</span> ٢٠٢٤
-            </p>
-            <p class="hero-kicker">نصنع حضورًا له معنى</p>
+        <div class="hero-top">
+          <div class="hero-blobs" aria-hidden="true">
+            <span class="hero-blob hero-blob-red"></span>
+            <span class="hero-blob hero-blob-yellow"></span>
           </div>
 
-          <div class="hero-title-wrap">
+          <div class="hero-copy">
+            <p class="hero-badge">
+              <span>وكالة إبداعية رقمية من الرياض</span
+              ><span class="hero-badge-dot" aria-hidden="true"></span>
+            </p>
+
             <h1>
-              <span class="hero-line-white">مو كل</span>
-              <span class="hero-line-red">حضور...</span>
-              <span class="hero-line-yellow">ينشاف.</span>
+              <span class="hero-line-ink">نبني حضورك.</span>
+              <span class="hero-line-brush">نسرع نموك.</span>
             </h1>
-          </div>
-          <div class="hero-foot">
-            <p>نصنع حضوراً يلفت،<br />ويثبت، وينشاف.</p>
+
+            <p class="hero-lead">
+              نصنع استراتيجيات إبداعية، محتوى مؤثر،<br />وحملات رقمية تساعد
+              علامتك على
+              <span class="hero-lead-highlight">الظهور، التأثير، والنمو.</span>
+            </p>
+
             <div class="hero-ctas">
-              <a href="#work" class="hero-work-link"
-                >شاهد أعمالنا <span>↙</span></a
+              <a href="start-project.html" class="button hero-cta-primary"
+                >ابدأ مشروعك <span>↙</span></a
               >
-              <!-- <a href="start-project.html" class="circle-arrow" aria-label="ابدأ مشروعك">↙</a> -->
+              <a href="#work" class="button hero-cta-secondary">شاهد أعمالنا</a>
+            </div>
+          </div>
+
+          <div class="hero-art" aria-hidden="true">
+            <div class="hero-image-wrap">
+              <img
+                src="assets/images/lhero.png"
+                alt=""
+                width="1200"
+                height="900"
+                loading="eager"
+                fetchpriority="high"
+                decoding="async"
+              />
             </div>
           </div>
         </div>
-        <div class="hero-art">
-          <div class="hero-image-wrap">
-            <img
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT%20Image%2030%20%D8%A3%D8%BA%D8%B3%D8%B7%D8%B3%202026%D8%8C%2005_46_35%20%D9%85-eQ2KeoS0huCJBtRenWga2kwiHVW7e3.png"
-              alt="كرسي مخرج مضاء داخل استوديو سينمائي"
-              loading="eager"
-              fetchpriority="high"
-              decoding="async"
-            />
+
+        <div class="hero-stats" data-reveal-group>
+          <div class="hero-stat">
+            <span class="hero-stat-value">+120</span
+            ><span class="hero-stat-label">عميل تم خدمته</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-value">+250</span
+            ><span class="hero-stat-label">مشروع مكتمل بنجاح</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-value">+7</span
+            ><span class="hero-stat-label">سنوات من الخبرة</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-value">97%</span
+            ><span class="hero-stat-label">نسبة رضا العملاء</span>
           </div>
         </div>
+
+        <a class="hero-scroll-cue" href="#work">
+          <span>تصفح أعمالنا المميزة</span>
+          <span class="hero-scroll-arrow" aria-hidden="true">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M12 4v15"></path>
+              <path d="M18 13l-6 6-6-6"></path>
+            </svg>
+          </span>
+        </a>
       </section>
 
       <section id="section-1" class="statement-section section-pad">
         <p class="section-index" data-reveal>( ٠١ ) <span>عن سكيب</span></p>
         <h2 data-reveal data-reveal-delay="1">
-          نشتغل على الشيء<br /><span>الذي يحدث</span><br />بعد أن يراك الناس.
+            نرفع أثر حضورك<br /><span>ونختصر</span><br />عليك الطريق.
         </h2>
         <div class="statement-note" data-reveal data-reveal-delay="2">
           <span>لا نطارد الانتباه.</span><br />نصمّم له سببًا يبقى.
@@ -156,49 +197,93 @@
             وش نقدر<br /><span>نسوي لك؟</span>
           </h2>
         </div>
-        <div class="services-layout">
-          <div class="service-preview" data-reveal data-reveal-delay="1">
-            <div class="preview-number" id="preview-number">01</div>
-            <div class="preview-frame">
-              <img
-                id="preview-image"
-                src="https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=900&q=80"
-                alt="معاينة من خدمات سكيب"
-                decoding="async"
-              />
+        <div class="services-body">
+          <div class="services-intro" data-reveal data-reveal-delay="1">
+            <p class="services-lead">سبع خدمات تشتغل مع بعض، من أول فكرة إلى نتيجة تقدر تلمسها.</p>
+            <div class="services-visual" id="services-visual">
+              <div class="services-visual-frame">
+                <img class="service-visual-img is-active" data-visual="0" src="assets/images/services/01-strategy.svg" alt="رسم توضيحي يمثل التخطيط الاستراتيجي وخارطة النمو" loading="lazy" decoding="async" />
+                <img class="service-visual-img" data-visual="1" src="assets/images/services/02-video.svg" alt="رسم توضيحي يمثل الإنتاج المرئي وتجهيزات التصوير" loading="lazy" decoding="async" />
+                <img class="service-visual-img" data-visual="2" src="assets/images/services/03-ads.svg" alt="رسم توضيحي يمثل الإعلانات الممولة وأداء الحملات" loading="lazy" decoding="async" />
+                <img class="service-visual-img" data-visual="3" src="assets/images/services/04-branding.svg" alt="رسم توضيحي يمثل تصميم الهوية البصرية" loading="lazy" decoding="async" />
+                <img class="service-visual-img" data-visual="4" src="assets/images/services/05-seo.svg" alt="رسم توضيحي يمثل تحسين محركات البحث" loading="lazy" decoding="async" />
+                <img class="service-visual-img" data-visual="5" src="assets/images/services/06-data.svg" alt="رسم توضيحي يمثل تحليل البيانات" loading="lazy" decoding="async" />
+                <img class="service-visual-img" data-visual="6" src="assets/images/services/07-web.svg" alt="رسم توضيحي يمثل تطوير المواقع والمتاجر" loading="lazy" decoding="async" />
+              </div>
             </div>
-            <p id="preview-desc">نبدأ من السؤال الصح.</p>
           </div>
-          <div class="service-list" id="service-list" data-reveal-group>
-            <button class="service-row is-active" data-index="0">
-              <span>01</span><strong>التخطيط الاستراتيجي</strong><i>↗</i>
-            </button>
-            <button class="service-row" data-index="1">
-              <span>02</span><strong>إدارة حسابات التواصل الاجتماعي</strong
-              ><i>↗</i>
-            </button>
-            <button class="service-row" data-index="2">
-              <span>03</span><strong>صناعة المحتوى</strong><i>↗</i>
-            </button>
-            <button class="service-row" data-index="3">
-              <span>04</span><strong>الإنتاج المرئي</strong><i>↗</i>
-            </button>
-            <button class="service-row" data-index="4">
-              <span>05</span><strong>الإعلانات المدفوعة</strong><i>↗</i>
-            </button>
-            <button class="service-row" data-index="5">
-              <span>06</span><strong>الهوية البصرية</strong><i>↗</i>
-            </button>
-            <button class="service-row" data-index="6">
-              <span>07</span><strong>تحسين محركات البحث</strong><i>↗</i>
-            </button>
-            <button class="service-row" data-index="7">
-              <span>08</span><strong>تحليل البيانات</strong><i>↗</i>
-            </button>
-            <button class="service-row" data-index="8">
-              <span>09</span><strong>تطوير المواقع والمتاجر</strong><i>↗</i>
-            </button>
-          </div>
+          <ul class="services-list" id="service-list" data-reveal-group>
+            <li>
+              <button class="service-item is-active" type="button" data-index="0" aria-pressed="true">
+                <span class="service-item-num">01</span>
+                <span class="service-item-copy">
+                  <span class="service-item-name">التخطيط الاستراتيجي</span>
+                  <span class="service-item-desc">نبدأ من السؤال الصح.</span>
+                </span>
+                <span class="service-item-arrow" aria-hidden="true">↗</span>
+              </button>
+            </li>
+            <li>
+              <button class="service-item" type="button" data-index="1" aria-pressed="false">
+                <span class="service-item-num">02</span>
+                <span class="service-item-copy">
+                  <span class="service-item-name">الإنتاج المرئي</span>
+                  <span class="service-item-desc">مشاهد تعلق في الذاكرة.</span>
+                </span>
+                <span class="service-item-arrow" aria-hidden="true">↗</span>
+              </button>
+            </li>
+            <li>
+              <button class="service-item" type="button" data-index="2" aria-pressed="false">
+                <span class="service-item-num">03</span>
+                <span class="service-item-copy">
+                  <span class="service-item-name">الإعلانات الممولة</span>
+                  <span class="service-item-desc">ميزانية تروح للمكان الصح.</span>
+                </span>
+                <span class="service-item-arrow" aria-hidden="true">↗</span>
+              </button>
+            </li>
+            <li>
+              <button class="service-item" type="button" data-index="3" aria-pressed="false">
+                <span class="service-item-num">04</span>
+                <span class="service-item-copy">
+                  <span class="service-item-name">تصميم الهوية البصرية</span>
+                  <span class="service-item-desc">شكل يثبت في البال.</span>
+                </span>
+                <span class="service-item-arrow" aria-hidden="true">↗</span>
+              </button>
+            </li>
+            <li>
+              <button class="service-item" type="button" data-index="4" aria-pressed="false">
+                <span class="service-item-num">05</span>
+                <span class="service-item-copy">
+                  <span class="service-item-name">تحسين محركات البحث</span>
+                  <span class="service-item-desc">تطلع وقت ما يبحثون عنك.</span>
+                </span>
+                <span class="service-item-arrow" aria-hidden="true">↗</span>
+              </button>
+            </li>
+            <li>
+              <button class="service-item" type="button" data-index="5" aria-pressed="false">
+                <span class="service-item-num">06</span>
+                <span class="service-item-copy">
+                  <span class="service-item-name">تحليل البيانات</span>
+                  <span class="service-item-desc">نفهم الأرقام قبل ما نحكم.</span>
+                </span>
+                <span class="service-item-arrow" aria-hidden="true">↗</span>
+              </button>
+            </li>
+            <li>
+              <button class="service-item" type="button" data-index="6" aria-pressed="false">
+                <span class="service-item-num">07</span>
+                <span class="service-item-copy">
+                  <span class="service-item-name">تطوير المواقع والمتاجر</span>
+                  <span class="service-item-desc">تجربة تبيع، مو بس تنعرض.</span>
+                </span>
+                <span class="service-item-arrow" aria-hidden="true">↗</span>
+              </button>
+            </li>
+          </ul>
         </div>
       </section>
 
@@ -208,11 +293,12 @@
             <span class="index-dot"></span>( ٠٣ ) <span>مختارات من الشغل</span>
           </p>
           <h2>شغلنا<br /><span>يتكلم.</span></h2>
+          <span class="work-accent-bar" aria-hidden="true"></span>
           <p class="work-lead">
             نقدّم أفكاراً تتحوّل إلى تجارب حقيقية.<br />استكشف بعض من مشاريعنا
             التي نفخر بها.
           </p>
-          <a class="text-link" href="#contact">شاهد كل الأعمال ↗</a>
+          <!-- <a class="text-link" href="#contact">شاهد كل الأعمال ↗</a> -->
         </div>
 
         <svg
@@ -246,26 +332,40 @@
           ></rect>
         </svg>
 
-        <div class="work-carousel">
+        <div class="work-carousel" id="work-carousel">
+          <div class="work-featured-label" data-reveal>
+            <p class="work-featured-kicker">مشروع مميز</p>
+            <p class="work-featured-index-row">
+              <span class="work-featured-index" id="work-index-current"
+                >01</span
+              >
+              <span class="work-featured-rule" aria-hidden="true"></span>
+            </p>
+          </div>
+
           <div
-            class="work-track"
-            id="work-track"
-            tabindex="0"
+            class="work-stage"
+            id="work-stage"
             role="region"
+            aria-roledescription="carousel"
             aria-label="مختارات من أعمالنا"
-            data-reveal-group
           >
-            <article class="work-card" data-index="0">
-              <div class="work-card-media">
+            <article class="work-slide is-active" data-index="0">
+              <button
+                class="work-slide-media"
+                type="button"
+                data-open-project
+                aria-label="عرض تفاصيل مشروع سوق السبعة"
+              >
                 <img
-                  src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1200&q=85"
+                  src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1400&q=85"
                   alt="سوق السبعة"
                   loading="lazy"
                   decoding="async"
                 />
-              </div>
-              <div class="work-card-body">
-                <div class="work-card-icon" aria-hidden="true">
+              </button>
+              <div class="work-slide-info">
+                <div class="work-slide-icon" aria-hidden="true">
                   <svg
                     viewBox="0 0 24 24"
                     fill="none"
@@ -278,28 +378,33 @@
                     <path d="M3 13l9 5 9-5"></path>
                   </svg>
                 </div>
-                <span class="work-card-tag">هوية + محتوى</span>
+                <span class="work-slide-tag">هوية + محتوى</span>
                 <h3>سوق السبعة</h3>
                 <p>
                   هوية بصرية ومحتوى متكامل لمشروع عقاري يعكس الفخامة والحداثة.
                 </p>
-                <a class="work-card-link" href="#contact"
-                  >عرض المشروع <span>↗</span></a
-                >
+                <button class="work-slide-link" type="button" data-open-project>
+                  عرض المشروع <span>↗</span>
+                </button>
               </div>
             </article>
 
-            <article class="work-card work-card--dark" data-index="1">
-              <div class="work-card-media">
+            <article class="work-slide" data-index="1">
+              <button
+                class="work-slide-media"
+                type="button"
+                data-open-project
+                aria-label="عرض تفاصيل مشروع موسم الرياض"
+              >
                 <img
-                  src="https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?auto=format&fit=crop&w=1200&q=85"
+                  src="assets/images/موسم الرياض.png"
                   alt="موسم الرياض"
                   loading="lazy"
                   decoding="async"
                 />
-              </div>
-              <div class="work-card-body">
-                <div class="work-card-icon" aria-hidden="true">
+              </button>
+              <div class="work-slide-info">
+                <div class="work-slide-icon" aria-hidden="true">
                   <svg
                     viewBox="0 0 24 24"
                     fill="none"
@@ -314,28 +419,33 @@
                     <path d="M9 21h6"></path>
                   </svg>
                 </div>
-                <span class="work-card-tag">حملة رقمية</span>
+                <span class="work-slide-tag">حملة رقمية</span>
                 <h3>موسم الرياض</h3>
                 <p>
                   حملة رقمية متكاملة لواحد من أكبر المواسم الترفيهية في المنطقة.
                 </p>
-                <a class="work-card-link" href="#contact"
-                  >عرض المشروع <span>↗</span></a
-                >
+                <button class="work-slide-link" type="button" data-open-project>
+                  عرض المشروع <span>↗</span>
+                </button>
               </div>
             </article>
 
-            <article class="work-card" data-index="2">
-              <div class="work-card-media">
+            <article class="work-slide" data-index="2">
+              <button
+                class="work-slide-media"
+                type="button"
+                data-open-project
+                aria-label="عرض تفاصيل مشروع صوت المكان"
+              >
                 <img
-                  src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=1200&q=85"
+                  src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=1400&q=85"
                   alt="صوت المكان"
                   loading="lazy"
                   decoding="async"
                 />
-              </div>
-              <div class="work-card-body">
-                <div class="work-card-icon" aria-hidden="true">
+              </button>
+              <div class="work-slide-info">
+                <div class="work-slide-icon" aria-hidden="true">
                   <svg
                     viewBox="0 0 24 24"
                     fill="none"
@@ -350,49 +460,217 @@
                     <path d="M16 10l5-3v10l-5-3"></path>
                   </svg>
                 </div>
-                <span class="work-card-tag">إنتاج مرئي</span>
+                <span class="work-slide-tag">إنتاج مرئي</span>
                 <h3>صوت المكان</h3>
                 <p>إنتاج مرئي وصوتي يوثّق تفاصيل المكان بأسلوب سينمائي مؤثر.</p>
-                <a class="work-card-link" href="#contact"
-                  >عرض المشروع <span>↗</span></a
-                >
+                <button class="work-slide-link" type="button" data-open-project>
+                  عرض المشروع <span>↗</span>
+                </button>
               </div>
             </article>
           </div>
 
+          <div class="work-controls">
+            <p class="work-counter">
+              <span id="work-counter-current">01</span
+              ><span class="work-counter-sep">/</span
+              ><span id="work-counter-total">03</span>
+            </p>
+            <div class="work-arrows">
+              <button
+                class="work-arrow"
+                type="button"
+                id="work-prev"
+                aria-label="المشروع السابق"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M19 12H5"></path>
+                  <path d="M11 18l-6-6 6-6"></path>
+                </svg>
+              </button>
+              <button
+                class="work-arrow work-arrow--next"
+                type="button"
+                id="work-next"
+                aria-label="المشروع التالي"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M5 12h14"></path>
+                  <path d="M13 6l6 6-6 6"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
           <div
-            class="work-dots"
-            id="work-dots"
+            class="work-thumbs"
+            id="work-thumbs"
             role="tablist"
             aria-label="التنقل بين المشاريع"
           >
             <button
-              class="work-dot is-active"
+              class="work-thumb is-active"
               type="button"
               data-goto="0"
               role="tab"
               aria-selected="true"
               aria-label="مشروع سوق السبعة"
-            ></button>
+            >
+              <img
+                src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=400&q=70"
+                alt=""
+                loading="lazy"
+              />
+              <span class="work-thumb-overlay">
+                <span class="work-thumb-index">01</span>
+                <span class="work-thumb-title">سوق السبعة</span>
+              </span>
+            </button>
             <button
-              class="work-dot"
+              class="work-thumb"
               type="button"
               data-goto="1"
               role="tab"
               aria-selected="false"
               aria-label="مشروع موسم الرياض"
-            ></button>
+            >
+              <img
+                src="assets/images/موسم الرياض.png"
+                alt=""
+                loading="lazy"
+              />
+              <span class="work-thumb-overlay">
+                <span class="work-thumb-index">02</span>
+                <span class="work-thumb-title">موسم الرياض</span>
+              </span>
+            </button>
             <button
-              class="work-dot"
+              class="work-thumb"
               type="button"
               data-goto="2"
               role="tab"
               aria-selected="false"
               aria-label="مشروع صوت المكان"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=400&q=70"
+                alt=""
+                loading="lazy"
+              />
+              <span class="work-thumb-overlay">
+                <span class="work-thumb-index">03</span>
+                <span class="work-thumb-title">صوت المكان</span>
+              </span>
+            </button>
+          </div>
+
+          <div class="work-dots" id="work-dots" aria-hidden="true">
+            <button
+              class="work-dot is-active"
+              type="button"
+              data-goto="0"
+              tabindex="-1"
+            ></button>
+            <button
+              class="work-dot"
+              type="button"
+              data-goto="1"
+              tabindex="-1"
+            ></button>
+            <button
+              class="work-dot"
+              type="button"
+              data-goto="2"
+              tabindex="-1"
             ></button>
           </div>
         </div>
       </section>
+
+      <div
+        class="project-modal"
+        id="project-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="project-modal-title"
+        hidden
+      >
+        <div class="project-modal-backdrop" data-modal-close></div>
+        <div class="project-modal-panel">
+          <button
+            class="project-modal-close"
+            type="button"
+            data-modal-close
+            aria-label="إغلاق"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M18 6L6 18"></path>
+              <path d="M6 6l12 12"></path>
+            </svg>
+          </button>
+
+          <div class="project-modal-media">
+            <img id="project-modal-image" src="" alt="" />
+          </div>
+
+          <div class="project-modal-body">
+            <p class="project-modal-eyebrow">
+              <span id="project-modal-counter">( 01 )</span>
+              <span id="project-modal-tag">—</span>
+            </p>
+            <div
+              class="project-modal-icon"
+              id="project-modal-icon"
+              aria-hidden="true"
+            ></div>
+            <h3 id="project-modal-title"></h3>
+            <p id="project-modal-desc"></p>
+
+            <div class="project-modal-services">
+              <p class="project-modal-services-label">الخدمات المقدمة</p>
+              <ul id="project-modal-services-list"></ul>
+            </div>
+
+            <div class="project-modal-nav">
+              <button
+                type="button"
+                class="project-modal-navlink"
+                id="project-modal-prev"
+              >
+                <span>↖</span> المشروع السابق
+              </button>
+              <button
+                type="button"
+                class="project-modal-navlink project-modal-navlink--next"
+                id="project-modal-next"
+              >
+                المشروع التالي <span>↗</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <section id="section-4" class="why-section section-pad">
         <p class="section-index" data-reveal>( ٠٤ ) <span>ليش سكيب؟</span></p>
@@ -458,14 +736,14 @@
           <a class="button button-light" href="start-project.html"
             >ابدأ مشروعك <span>↗</span></a
           >
-          <a class="outline-link" href="mailto:hello@skip.sa">تواصل معنا</a>
+          <a class="outline-link" href="mailto:info@skip.sa">تواصل معنا</a>
         </div>
       </section>
 
       <footer id="join" class="site-footer">
         <div class="footer-top">
           <img
-            src="assets/images/logo-removebg-preview.png"
+            src="assets/images/white-logo.png"
             alt="شعار SKIP"
             width="54"
             height="58"
@@ -485,7 +763,7 @@
             <a href="#contact">تواصل معنا</a>
           </div>
           <div class="footer-contact">
-            <a href="mailto:hello@skip.sa">hello@skip.sa</a>
+            <a href="mailto:info@skip.sa">info@skip.sa</a>
             <span>الرياض، المملكة العربية السعودية</span>
           </div>
           <div class="socials">
@@ -509,7 +787,7 @@
 
       <a
         class="whatsapp"
-        href="https://wa.me/966500000000"
+        href="https://wa.me/966510010702"
         aria-label="تواصل معنا عبر واتساب"
       >
         <img

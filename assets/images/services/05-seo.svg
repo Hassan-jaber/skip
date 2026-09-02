@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="t-05">
+  <title id="t-05">تحسين محركات البحث</title>
+  <defs>
+    <radialGradient id="bgGlow-05" cx="50%" cy="50%" r="75%">
+      <stop offset="0%" stop-color="#2b191b"/>
+      <stop offset="100%" stop-color="#201113"/>
+    </radialGradient>
+    <radialGradient id="accentGlow-05" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ef1c25" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#ef1c25" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bgGlow-05)"/>
+  
+  
+  <ellipse cx="760" cy="320" rx="360" ry="300" fill="url(#accentGlow-05)"/>
+  <circle cx="120.0" cy="560.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="144.0" cy="560.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="168.0" cy="560.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="192.0" cy="560.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="216.0" cy="560.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="240.0" cy="560.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="120.0" cy="584.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="144.0" cy="584.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="168.0" cy="584.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="192.0" cy="584.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="216.0" cy="584.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="240.0" cy="584.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="120.0" cy="608.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="144.0" cy="608.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="168.0" cy="608.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="192.0" cy="608.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="216.0" cy="608.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="240.0" cy="608.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="120.0" cy="632.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="144.0" cy="632.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="168.0" cy="632.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="192.0" cy="632.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="216.0" cy="632.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="240.0" cy="632.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="120.0" cy="656.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="144.0" cy="656.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="168.0" cy="656.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="192.0" cy="656.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="216.0" cy="656.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="240.0" cy="656.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+  <g transform="translate(300 260)" stroke="#f7f5ef" stroke-width="2.5" fill="none" opacity="0.85">
+    <rect x="0" y="0" width="440" height="58" rx="29"/>
+    <circle cx="30" cy="29" r="8" fill="#ef1c25" stroke="none"/>
+    <rect x="0" y="88" width="340" height="58" rx="29"/>
+    <circle cx="30" cy="117" r="8" fill="#ffe62c" stroke="none"/>
+    <rect x="0" y="176" width="390" height="58" rx="29"/>
+    <circle cx="30" cy="205" r="8" fill="#f7f5ef" stroke="none"/>
+  </g>
+  <g transform="translate(830 470)">
+    <circle r="130" fill="#201113" stroke="#f7f5ef" stroke-width="8"/>
+    <line x1="92" y1="92" x2="200" y2="200" stroke="#f7f5ef" stroke-width="16" stroke-linecap="round"/>
+    <path d="M-60 20 Q0 -60 60 20" stroke="#ef1c25" stroke-width="6" fill="none" stroke-linecap="round"/>
+  </g>
+  <g stroke="#ffe62c" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M120 700 L220 620 L300 660 L420 520"/>
+    <path d="M370 520 L420 520 L420 570"/>
+  </g>
+
+</svg>

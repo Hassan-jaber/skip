@@ -18,25 +18,25 @@
    ========================================================================== */
 .start-hero {
   background:
-    radial-gradient(120% 65% at 100% 0%, rgba(239, 28, 37, .18), transparent 62%),
-    var(--black);
-  color: white;
+    radial-gradient(120% 65% at 100% 0%, rgba(239, 28, 37, .09), transparent 62%),
+    var(--paper);
+  color: var(--black);
   overflow: hidden;
   padding: 110px 8vw 6vw; /* 110px clears the absolutely-positioned 88px header */
   position: relative;
 }
 .start-hero .section-index {
-  background: rgba(255, 255, 255, .05);
-  border: 1px solid rgba(255, 255, 255, .16);
+  background: rgba(32, 17, 19, .04);
+  border: 1px solid rgba(32, 17, 19, .16);
   border-radius: 999px;
-  color: rgba(255, 255, 255, .78);
+  color: var(--black);
   display: inline-flex;
   gap: .55rem;
   padding: 8px 18px 8px 16px;
   width: fit-content;
 }
 .start-hero h1 {
-  font-size: clamp(48px, 6vw, 104px);
+  font-size: clamp(48px, 5.9vw, 104px);
   font-weight: 700;
   letter-spacing: -.08em;
   line-height: 1.08;
@@ -45,7 +45,7 @@
 }
 .start-hero h1 span { color: var(--red); }
 .start-lead {
-  color: rgba(255, 255, 255, .65);
+  color: rgba(32, 17, 19, .62);
   font-size: 16px;
   line-height: 1.8;
   margin: 2rem 0 0;
@@ -79,7 +79,7 @@
     position: relative;
   }
   .start-hero-visual::before {
-    background: radial-gradient(closest-side, rgba(239, 28, 37, .4), rgba(239, 28, 37, .12) 45%, transparent 72%);
+    background: radial-gradient(closest-side, rgba(239, 28, 37, .22), rgba(239, 28, 37, .07) 45%, transparent 72%);
     content: '';
     filter: blur(4px);
     height: 82%;
@@ -92,14 +92,14 @@
   }
   .start-hero-visual img {
     display: block;
-    filter: drop-shadow(0 28px 54px rgba(239, 28, 37, .35));
+    filter: drop-shadow(0 28px 54px rgba(133, 21, 29, .22));
     max-width: 78%;
     position: relative;
     width: 100%;
     z-index: 1;
   }
   .start-hero-visual::after {
-    background: linear-gradient(0deg, var(--black) 2%, transparent 32%);
+    background: linear-gradient(0deg, var(--paper) 2%, transparent 32%);
     bottom: 0;
     content: '';
     height: 38%;
@@ -121,7 +121,7 @@
 
   /* The visual already carries its own glow; keep the section background
      flat so the two effects don't stack into a muddy wash. */
-  .start-hero { background: var(--black); }
+  .start-hero { background: var(--paper); }
 }
 
 .form-section {
@@ -153,9 +153,9 @@
   line-height: 1.5;
   margin-bottom: .65rem;
 }
-.req { color: var(--red); }
+.req { color: var(--red-ink); }
 .field-hint {
-  color: rgba(0, 0, 0, .5);
+  color: rgba(32, 17, 19, .55);
   font-size: 12px;
   margin: .5rem 0 0;
 }
@@ -164,7 +164,7 @@
 .field select,
 .field textarea {
   background: #fff;
-  border: 1px solid rgba(0, 0, 0, .14);
+  border: 1px solid rgba(32, 17, 19, .16);
   border-radius: 10px;
   color: var(--black);
   font-family: inherit;
@@ -180,7 +180,7 @@
   resize: vertical;
 }
 .field input::placeholder,
-.field textarea::placeholder { color: rgba(0, 0, 0, .38); }
+.field textarea::placeholder { color: rgba(32, 17, 19, .4); }
 .field input:focus,
 .field select:focus,
 .field textarea:focus {
@@ -199,12 +199,12 @@
   cursor: pointer;
   padding-left: 40px; /* room for the custom chevron */
 }
-.select-wrap select:required:invalid { color: rgba(0, 0, 0, .38); }
+.select-wrap select:required:invalid { color: rgba(32, 17, 19, .4); }
 .select-wrap::after {
   /* Physical (not logical) borders so the chevron always points down,
      regardless of the page's RTL direction. */
-  border-right: 1.5px solid rgba(0, 0, 0, .5);
-  border-bottom: 1.5px solid rgba(0, 0, 0, .5);
+  border-right: 1.5px solid rgba(32, 17, 19, .5);
+  border-bottom: 1.5px solid rgba(32, 17, 19, .5);
   content: '';
   height: 8px;
   left: 18px;
@@ -216,15 +216,17 @@
 }
 
 .field-error {
-  color: var(--red);
+  color: var(--red-ink);
   font-size: 12px;
   line-height: 1.6;
   margin: .5rem 0 0;
 }
 .field-error:empty { display: none; }
 
+/* Red, the hierarchy's primary-CTA color — burgundy on hover for a deeper,
+   more deliberate press state instead of the old flat black. */
 .submit-btn {
-  background: var(--black);
+  background: var(--red);
   color: white;
   display: flex;
   justify-content: center;
@@ -233,15 +235,15 @@
   padding: 18px 24px;
   width: 100%;
 }
-.submit-btn:hover { background: var(--red); }
+.submit-btn:hover { background: var(--burgundy); }
 .submit-btn:disabled { cursor: progress; opacity: .65; }
-.submit-btn:disabled:hover { background: var(--black); }
+.submit-btn:disabled:hover { background: var(--red); }
 
 .form-success {
   background: #fff;
-  border: 1px solid rgba(0, 0, 0, .1);
+  border: 1px solid rgba(32, 17, 19, .12);
   border-radius: 20px;
-  box-shadow: 0 24px 48px rgba(0, 0, 0, .08);
+  box-shadow: 0 24px 48px rgba(32, 17, 19, .1);
   margin: 0 auto;
   max-width: 560px;
   padding: 4rem clamp(24px, 4vw, 56px);
@@ -261,7 +263,7 @@
   width: 64px;
 }
 .form-success h2 { font-size: clamp(24px, 3vw, 32px); margin: 0 0 1rem; }
-.form-success p { color: rgba(0, 0, 0, .6); font-size: 15px; line-height: 1.8; margin: 0 0 1.75rem; }
+.form-success p { color: rgba(32, 17, 19, .62); font-size: 15px; line-height: 1.8; margin: 0 0 1.75rem; }
 
 /* ==========================================================================
    START HERO — tablet (<=900px). The visual is switched off entirely (see

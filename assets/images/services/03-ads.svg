@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="t-03">
+  <title id="t-03">الإعلانات الممولة</title>
+  <defs>
+    <radialGradient id="bgGlow-03" cx="50%" cy="50%" r="75%">
+      <stop offset="0%" stop-color="#2b191b"/>
+      <stop offset="100%" stop-color="#201113"/>
+    </radialGradient>
+    <radialGradient id="accentGlow-03" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ef1c25" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#ef1c25" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bgGlow-03)"/>
+  
+  
+  <ellipse cx="420" cy="360" rx="360" ry="300" fill="url(#accentGlow-03)"/>
+  <circle cx="860.0" cy="220.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="884.0" cy="220.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="908.0" cy="220.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="932.0" cy="220.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="956.0" cy="220.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="980.0" cy="220.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="860.0" cy="244.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="884.0" cy="244.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="908.0" cy="244.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="932.0" cy="244.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="956.0" cy="244.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="980.0" cy="244.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="860.0" cy="268.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="884.0" cy="268.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="908.0" cy="268.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="932.0" cy="268.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="956.0" cy="268.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="980.0" cy="268.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="860.0" cy="292.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="884.0" cy="292.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="908.0" cy="292.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="932.0" cy="292.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="956.0" cy="292.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="980.0" cy="292.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+  <g transform="translate(220 330) rotate(-8)" stroke="#f7f5ef" stroke-width="3" fill="none" stroke-linejoin="round">
+    <path d="M0 40 L120 0 L120 160 L0 120 Z"/>
+    <path d="M120 0 L280 -50 L280 210 L120 160 Z"/>
+    <path d="M0 40 L-46 40 Q-64 40 -64 66 L-64 96 Q-64 122 -38 122 L0 120"/>
+    <path d="M40 122 L58 210 L96 210 L82 128" fill="#ef1c25" stroke="none"/>
+  </g>
+  <g stroke="#ffe62c" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.9">
+    <path d="M520 340 Q560 410 520 480"/>
+    <path d="M560 300 Q630 410 560 520"/>
+  </g>
+  <g transform="translate(760 470)">
+    <rect x="0" y="60" width="46" height="120" rx="6" fill="#f7f5ef" opacity="0.9"/>
+    <rect x="66" y="20" width="46" height="160" rx="6" fill="#f7f5ef" opacity="0.9"/>
+    <rect x="132" y="-40" width="46" height="220" rx="6" fill="#ef1c25"/>
+    <path d="M4 60 L70 20 L136 -40" stroke="#ffe62c" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <circle cx="136" cy="-40" r="9" fill="#ffe62c"/>
+  </g>
+
+</svg>

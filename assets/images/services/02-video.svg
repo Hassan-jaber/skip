@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="t-02">
+  <title id="t-02">الإنتاج المرئي</title>
+  <defs>
+    <radialGradient id="bgGlow-02" cx="50%" cy="50%" r="75%">
+      <stop offset="0%" stop-color="#2b191b"/>
+      <stop offset="100%" stop-color="#201113"/>
+    </radialGradient>
+    <radialGradient id="accentGlow-02" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ef1c25" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#ef1c25" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bgGlow-02)"/>
+  
+  
+  <ellipse cx="340" cy="300" rx="340" ry="280" fill="url(#accentGlow-02)"/>
+  <circle cx="830.0" cy="560.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="854.0" cy="560.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="878.0" cy="560.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="902.0" cy="560.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="926.0" cy="560.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="950.0" cy="560.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="830.0" cy="584.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="854.0" cy="584.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="878.0" cy="584.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="902.0" cy="584.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="926.0" cy="584.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="950.0" cy="584.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="830.0" cy="608.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="854.0" cy="608.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="878.0" cy="608.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="902.0" cy="608.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="926.0" cy="608.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="950.0" cy="608.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="830.0" cy="632.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="854.0" cy="632.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="878.0" cy="632.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="902.0" cy="632.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="926.0" cy="632.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="950.0" cy="632.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="830.0" cy="656.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="854.0" cy="656.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="878.0" cy="656.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="902.0" cy="656.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="926.0" cy="656.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+    <circle cx="950.0" cy="656.0" r="2.6" fill="#f7f5ef" opacity="0.5"/>
+  <g transform="translate(260 260)" stroke="#f7f5ef" stroke-width="3" fill="none">
+    <rect x="0" y="70" width="420" height="270" rx="16"/>
+    <path d="M0 70 L60 -20 L480 -20 L420 70 Z" fill="#201113" />
+    <path d="M0 70 L480 70" />
+    <path d="M60 -20 L0 70 M160 -20 L100 70 M260 -20 L200 70 M360 -20 L300 70 M460 -20 L400 70" stroke="#ef1c25" stroke-width="6"/>
+  </g>
+  <circle cx="470" cy="470" r="70" fill="#ef1c25"/>
+  <polygon points="450,438 450,502 508,470" fill="#f7f5ef"/>
+  <g transform="translate(880 300)" stroke="#f7f5ef" stroke-width="2.5" fill="none" opacity="0.9">
+    <circle r="120"/>
+    <circle r="86"/>
+    <circle r="18" fill="#ffe62c" stroke="none"/>
+    <path d="M0 -120 L0 -86 M0 120 L0 86 M-120 0 L-86 0 M120 0 L86 0 M-85 -85 L-61 -61 M85 85 L61 61 M85 -85 L61 -61 M-85 85 L-61 61" stroke-width="3"/>
+  </g>
+
+</svg>

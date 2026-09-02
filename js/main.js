@@ -3,9 +3,12 @@
  * Vanilla JS behaviour, migrated 1:1 from the original React component,
  * plus a few lightweight, progressive-enhancement additions:
  *   1) mobile/tablet full-screen nav menu (open/close)
- *   2) the services list hover/focus preview (active service index)
+ *   2) the services section's active-service state (hover/focus/click),
+ *      crossfading between the real <img> illustrations already in the
+ *      markup — no image creation or src-swapping
  *   3) the work section's project card carousel (manual + autoplay)
  *   4) a small IntersectionObserver-driven scroll-reveal for section content
+ *   5) the hero stats row's 0 -> final-value animated counters
  * Every page on the site loads this same file, so each piece guards itself
  * against the elements it needs simply not being present on that page.
  */
@@ -46,223 +49,342 @@
   }
 
   /* -----------------------------------------------------------
-   * 2) Services section — active preview driven by hover/focus
+   * 2) Services section — active-service state, hover/focus/click driven.
+   *    Every service's illustration is a real <img> already sitting in the
+   *    markup (nothing is created or src-swapped by JS); this only toggles
+   *    which one is visible (a crossfade) and mirrors the same active state
+   *    onto the matching list item. The first image/item already carries
+   *    .is-active in the HTML, so the section looks correct even with JS
+   *    disabled — this is a progressive-enhancement layer on top of that.
    * ----------------------------------------------------------- */
-  var services = [
-    ['01', 'التخطيط الاستراتيجي', 'نبدأ من السؤال الصح.'],
-    ['02', 'إدارة حسابات التواصل الاجتماعي', 'حضور يومي، بصوت واضح.'],
-    ['03', 'صناعة المحتوى', 'فكرة تعرف طريقها للناس.'],
-    ['04', 'الإنتاج المرئي', 'مشاهد تعلق في الذاكرة.'],
-    ['05', 'الإعلانات المدفوعة', 'ميزانية تروح للمكان الصح.'],
-    ['06', 'الهوية البصرية', 'شكل يثبت في البال.'],
-    ['07', 'تحسين محركات البحث', 'تطلع وقت ما يبحثون عنك.'],
-    ['08', 'تحليل البيانات', 'نفهم الأرقام قبل ما نحكم.'],
-    ['09', 'تطوير المواقع والمتاجر', 'تجربة تبيع، مو بس تنعرض.']
-  ];
-
-  var previewPhotoIds = [
-    '1558655146-d09347e92766',
-    '1556761175-b945217fcb8c',
-    '1516321318423-f06f85e504b3',
-    '1485846234645-a62644f84728',
-    '1460925895917-afdab827c52f'
-  ];
-
   var serviceList = document.getElementById('service-list');
-  var previewNumber = document.getElementById('preview-number');
-  var previewImage = document.getElementById('preview-image');
-  var previewDesc = document.getElementById('preview-desc');
+  var servicesVisual = document.getElementById('services-visual');
 
   function setActiveService(index) {
     if (!serviceList) return;
 
-    var rows = serviceList.querySelectorAll('.service-row');
-    for (var i = 0; i < rows.length; i++) {
-      rows[i].classList.toggle('is-active', i === index);
+    var items = serviceList.querySelectorAll('.service-item');
+    for (var i = 0; i < items.length; i++) {
+      var active = i === index;
+      items[i].classList.toggle('is-active', active);
+      items[i].setAttribute('aria-pressed', active ? 'true' : 'false');
     }
 
-    var service = services[index];
-    if (!service) return;
-
-    if (previewNumber) previewNumber.textContent = service[0];
-    if (previewDesc) previewDesc.textContent = service[2];
-    if (previewImage) {
-      var photoId = previewPhotoIds[index % previewPhotoIds.length];
-      previewImage.src = 'https://images.unsplash.com/photo-' + photoId + '?auto=format&fit=crop&w=900&q=80';
+    if (servicesVisual) {
+      var images = servicesVisual.querySelectorAll('.service-visual-img');
+      for (var k = 0; k < images.length; k++) {
+        images[k].classList.toggle('is-active', k === index);
+      }
     }
   }
 
   if (serviceList) {
-    var serviceRows = serviceList.querySelectorAll('.service-row');
-    for (var j = 0; j < serviceRows.length; j++) {
-      (function (row) {
-        var index = parseInt(row.getAttribute('data-index'), 10);
-        row.addEventListener('mouseenter', function () { setActiveService(index); });
-        row.addEventListener('focus', function () { setActiveService(index); });
-      })(serviceRows[j]);
+    var serviceItems = serviceList.querySelectorAll('.service-item');
+    for (var j = 0; j < serviceItems.length; j++) {
+      (function (item) {
+        var index = parseInt(item.getAttribute('data-index'), 10);
+        item.addEventListener('mouseenter', function () { setActiveService(index); });
+        item.addEventListener('focus', function () { setActiveService(index); });
+        item.addEventListener('click', function () { setActiveService(index); });
+      })(serviceItems[j]);
     }
   }
 
   /* -----------------------------------------------------------
-   * 3) Work section — project card carousel: manual controls +
-   *    autoplay that loops, pauses on interaction, and resumes.
+   * 3) Work section — featured-project carousel: a crossfading stage
+   *    synced with a thumbnail strip, a counter, prev/next controls and
+   *    dot pagination, plus the project-details modal it opens. Autoplay
+   *    loops, pauses on interaction, and resumes a short while later.
    * ----------------------------------------------------------- */
-  var workTrack = document.getElementById('work-track');
-  var workDotsWrap = document.getElementById('work-dots');
+  var workCarousel = document.getElementById('work-carousel');
+  var workStage = document.getElementById('work-stage');
 
-  if (workTrack && workDotsWrap) {
-    var workCards = Array.prototype.slice.call(workTrack.querySelectorAll('.work-card'));
-    var workDots = Array.prototype.slice.call(workDotsWrap.querySelectorAll('.work-dot'));
-    var workCarousel = workTrack.closest('.work-carousel') || workTrack;
+  if (workCarousel && workStage) {
+    var workSlides = Array.prototype.slice.call(workStage.querySelectorAll('.work-slide'));
+    var workThumbs = Array.prototype.slice.call(document.querySelectorAll('#work-thumbs .work-thumb'));
+    var workDotEls = Array.prototype.slice.call(document.querySelectorAll('#work-dots .work-dot'));
+    var workIndexCurrentEl = document.getElementById('work-index-current');
+    var workCounterCurrentEl = document.getElementById('work-counter-current');
+    var workCounterTotalEl = document.getElementById('work-counter-total');
+    var workPrevBtn = document.getElementById('work-prev');
+    var workNextBtn = document.getElementById('work-next');
 
-    function goToWorkSlide(index) {
-      var card = workCards[index];
-      if (!card) return;
-      // .work-track is position:relative, so card.offsetLeft is already
-      // measured relative to it (its offsetParent) — no extra math needed.
-      workTrack.scrollTo({ left: card.offsetLeft, behavior: 'smooth' });
+    var workCount = workSlides.length;
+    var workActiveIndex = 0;
+
+    function pad2(n) { return (n < 10 ? '0' : '') + n; }
+
+    if (workCounterTotalEl) workCounterTotalEl.textContent = pad2(workCount);
+
+    // Updates the featured slide, thumbnail, dot and counter together so
+    // they always agree, whichever control triggered the change.
+    function setWorkIndex(index) {
+      workActiveIndex = ((index % workCount) + workCount) % workCount;
+
+      workSlides.forEach(function (slide, i) {
+        slide.classList.toggle('is-active', i === workActiveIndex);
+      });
+      workThumbs.forEach(function (thumb, i) {
+        var active = i === workActiveIndex;
+        thumb.classList.toggle('is-active', active);
+        thumb.setAttribute('aria-selected', active ? 'true' : 'false');
+      });
+      workDotEls.forEach(function (dot, i) {
+        dot.classList.toggle('is-active', i === workActiveIndex);
+      });
+      if (workIndexCurrentEl) workIndexCurrentEl.textContent = pad2(workActiveIndex + 1);
+      if (workCounterCurrentEl) workCounterCurrentEl.textContent = pad2(workActiveIndex + 1);
     }
 
-    function setActiveWorkDot(index) {
-      for (var i = 0; i < workDots.length; i++) {
-        var active = i === index;
-        workDots[i].classList.toggle('is-active', active);
-        workDots[i].setAttribute('aria-selected', active ? 'true' : 'false');
+    // --- Autoplay: advances one project at a time and loops back to the
+    // first after the last. Paused while the carousel is out of view, the
+    // tab is hidden, reduced motion is requested, the project modal is
+    // open, or the user is actively interacting with it (hover, focus,
+    // touch) — and resumed automatically a short while after they let go.
+    var AUTOPLAY_INTERVAL = 5500;
+    var RESUME_DELAY = 4000;
+    var workAutoplayTimer = null;
+    var workResumeTimer = null;
+    var workInView = true;
+
+    function stopWorkAutoplay() {
+      if (workAutoplayTimer) {
+        clearInterval(workAutoplayTimer);
+        workAutoplayTimer = null;
       }
     }
 
-    function getActiveWorkIndex() {
-      var i = workDots.findIndex(function (d) { return d.classList.contains('is-active'); });
-      return i === -1 ? 0 : i;
-    }
-
-    // --- Autoplay: advances one slide at a time and loops back to the
-    // first card after the last one. Paused while the carousel is out of
-    // view, the tab is hidden, reduced motion is requested, or the user is
-    // actively interacting with it (hover, focus, touch, manual scroll) —
-    // and resumed automatically a short while after they let go.
-    var AUTOPLAY_INTERVAL = 5000;
-    var RESUME_DELAY = 3500;
-    var autoplayTimer = null;
-    var resumeTimer = null;
-    var carouselInView = true;
-
-    function stopAutoplay() {
-      if (autoplayTimer) {
-        clearInterval(autoplayTimer);
-        autoplayTimer = null;
-      }
-    }
-
-    function startAutoplay() {
-      if (prefersReducedMotion || autoplayTimer || !carouselInView || document.hidden) return;
-      if (workCards.length < 2) return;
-      autoplayTimer = setInterval(function () {
-        var nextIndex = (getActiveWorkIndex() + 1) % workCards.length;
-        // Update the dot immediately rather than waiting on the scroll-sync
-        // debounce below to catch up.
-        setActiveWorkDot(nextIndex);
-        goToWorkSlide(nextIndex);
+    function startWorkAutoplay() {
+      if (prefersReducedMotion || workAutoplayTimer || !workInView || document.hidden) return;
+      if (workCount < 2) return;
+      workAutoplayTimer = setInterval(function () {
+        setWorkIndex(workActiveIndex + 1);
       }, AUTOPLAY_INTERVAL);
     }
 
-    function pauseAutoplay() {
-      stopAutoplay();
-      clearTimeout(resumeTimer);
+    function pauseWorkAutoplay() {
+      stopWorkAutoplay();
+      clearTimeout(workResumeTimer);
     }
-    function scheduleResume() {
-      clearTimeout(resumeTimer);
-      resumeTimer = setTimeout(startAutoplay, RESUME_DELAY);
+    function scheduleWorkResume() {
+      clearTimeout(workResumeTimer);
+      workResumeTimer = setTimeout(startWorkAutoplay, RESUME_DELAY);
     }
-    function pauseAndScheduleResume() {
-      pauseAutoplay();
-      scheduleResume();
+    function pauseAndScheduleWorkResume() {
+      pauseWorkAutoplay();
+      scheduleWorkResume();
     }
 
     // Sustained hover / keyboard focus: pause immediately and only resume
-    // once the user actually leaves (not just after a fixed delay, so a
-    // long hover never gets interrupted by an autoplay jump).
-    workCarousel.addEventListener('pointerenter', pauseAutoplay);
-    workCarousel.addEventListener('pointerleave', scheduleResume);
-    workCarousel.addEventListener('focusin', pauseAutoplay);
-    workCarousel.addEventListener('focusout', scheduleResume);
+    // once the user actually leaves, so a long hover never gets
+    // interrupted by an autoplay jump.
+    workCarousel.addEventListener('pointerenter', pauseWorkAutoplay);
+    workCarousel.addEventListener('pointerleave', scheduleWorkResume);
+    workCarousel.addEventListener('focusin', pauseWorkAutoplay);
+    workCarousel.addEventListener('focusout', scheduleWorkResume);
 
     // Touch: a tap/swipe is a one-off interaction with no "leave" event of
     // its own, so pause and resume a few seconds later.
-    workCarousel.addEventListener('touchstart', pauseAndScheduleResume, { passive: true });
+    workCarousel.addEventListener('touchstart', pauseAndScheduleWorkResume, { passive: true });
 
     if ('IntersectionObserver' in window) {
-      var carouselVisibilityObserver = new IntersectionObserver(function (entries) {
+      var workVisibilityObserver = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
-          carouselInView = entry.isIntersecting;
-          if (carouselInView) {
-            startAutoplay();
+          workInView = entry.isIntersecting;
+          if (workInView) {
+            startWorkAutoplay();
           } else {
-            stopAutoplay();
+            stopWorkAutoplay();
           }
         });
-      }, { threshold: 0.4 });
-      carouselVisibilityObserver.observe(workCarousel);
+      }, { threshold: 0.35 });
+      workVisibilityObserver.observe(workCarousel);
     } else {
-      startAutoplay();
+      startWorkAutoplay();
     }
 
     document.addEventListener('visibilitychange', function () {
       if (document.hidden) {
-        stopAutoplay();
+        stopWorkAutoplay();
       } else {
-        startAutoplay();
+        startWorkAutoplay();
       }
     });
 
-    workDots.forEach(function (dot, i) {
+    if (workPrevBtn) {
+      workPrevBtn.addEventListener('click', function () {
+        setWorkIndex(workActiveIndex - 1);
+        pauseAndScheduleWorkResume();
+      });
+    }
+    if (workNextBtn) {
+      workNextBtn.addEventListener('click', function () {
+        setWorkIndex(workActiveIndex + 1);
+        pauseAndScheduleWorkResume();
+      });
+    }
+
+    workThumbs.forEach(function (thumb, i) {
+      thumb.addEventListener('click', function () {
+        setWorkIndex(i);
+        pauseAndScheduleWorkResume();
+      });
+    });
+    workDotEls.forEach(function (dot, i) {
       dot.addEventListener('click', function () {
-        // Update the active dot immediately for instant feedback, rather
-        // than waiting on the scroll-sync debounce below to catch up.
-        setActiveWorkDot(i);
-        goToWorkSlide(i);
-        pauseAndScheduleResume();
+        setWorkIndex(i);
+        pauseAndScheduleWorkResume();
       });
     });
 
-    // Keep the dots in sync while the user scrolls/swipes the track
-    // manually, by finding whichever card is closest to the start edge.
-    var workScrollTimeout;
-    workTrack.addEventListener('scroll', function () {
-      clearTimeout(workScrollTimeout);
-      workScrollTimeout = setTimeout(function () {
-        var trackLeft = workTrack.scrollLeft;
-        var closestIndex = 0;
-        var closestDistance = Infinity;
-        workCards.forEach(function (card, i) {
-          var distance = Math.abs(card.offsetLeft - trackLeft);
-          if (distance < closestDistance) {
-            closestDistance = distance;
-            closestIndex = i;
-          }
-        });
-        setActiveWorkDot(closestIndex);
-        // Manual drag/trackpad scrolling only reaches here while the
-        // cursor/finger is over the carousel, which already paused
-        // autoplay via pointerenter/touchstart — this just makes sure
-        // the resume timer counts from when scrolling actually settled.
-        scheduleResume();
-      }, 100);
-    }, { passive: true });
-
-    // Basic keyboard support when the track itself is focused.
-    workTrack.addEventListener('keydown', function (e) {
-      var activeIndex = getActiveWorkIndex();
+    // Basic keyboard support when the stage itself is focused.
+    workStage.addEventListener('keydown', function (e) {
       if (e.key === 'ArrowRight') {
         e.preventDefault();
-        goToWorkSlide(Math.min(activeIndex + 1, workCards.length - 1));
-        pauseAndScheduleResume();
+        setWorkIndex(workActiveIndex + 1);
+        pauseAndScheduleWorkResume();
       } else if (e.key === 'ArrowLeft') {
         e.preventDefault();
-        goToWorkSlide(Math.max(activeIndex - 1, 0));
-        pauseAndScheduleResume();
+        setWorkIndex(workActiveIndex - 1);
+        pauseAndScheduleWorkResume();
       }
     });
+
+    setWorkIndex(0);
+
+    /* ---- Project details modal --------------------------------------
+     * Reads its content straight off the matching .work-slide (image,
+     * icon, tag, title, description) instead of duplicating that data in
+     * JS — the DOM markup stays the single source of truth. The "services
+     * provided" list is derived from the existing tag text (e.g. "هوية +
+     * محتوى" → two items) rather than inventing metadata the project data
+     * doesn't have. */
+    var projectModal = document.getElementById('project-modal');
+
+    if (projectModal) {
+      var modalImage = document.getElementById('project-modal-image');
+      var modalCounter = document.getElementById('project-modal-counter');
+      var modalTag = document.getElementById('project-modal-tag');
+      var modalIcon = document.getElementById('project-modal-icon');
+      var modalTitle = document.getElementById('project-modal-title');
+      var modalDesc = document.getElementById('project-modal-desc');
+      var modalServicesList = document.getElementById('project-modal-services-list');
+      var modalPrevBtn = document.getElementById('project-modal-prev');
+      var modalNextBtn = document.getElementById('project-modal-next');
+      var modalCloseEls = Array.prototype.slice.call(projectModal.querySelectorAll('[data-modal-close]'));
+      var openTriggers = Array.prototype.slice.call(document.querySelectorAll('[data-open-project]'));
+      var modalLastFocused = null;
+
+      function fillProjectModal(index) {
+        var slide = workSlides[index];
+        if (!slide) return;
+
+        var img = slide.querySelector('.work-slide-media img');
+        var icon = slide.querySelector('.work-slide-icon');
+        var tag = slide.querySelector('.work-slide-tag');
+        var title = slide.querySelector('h3');
+        var desc = slide.querySelector('p');
+        var tagText = tag ? tag.textContent.trim() : '';
+
+        if (modalImage && img) { modalImage.src = img.src; modalImage.alt = img.alt; }
+        if (modalCounter) modalCounter.textContent = '( ' + pad2(index + 1) + ' )';
+        if (modalTag) modalTag.textContent = tagText;
+        if (modalIcon) modalIcon.innerHTML = icon ? icon.innerHTML : '';
+        if (modalTitle) modalTitle.textContent = title ? title.textContent : '';
+        if (modalDesc) modalDesc.textContent = desc ? desc.textContent : '';
+
+        if (modalServicesList) {
+          modalServicesList.innerHTML = '';
+          tagText.split('+').map(function (s) { return s.trim(); }).filter(Boolean).forEach(function (label) {
+            var li = document.createElement('li');
+            li.textContent = label;
+            modalServicesList.appendChild(li);
+          });
+        }
+      }
+
+      function onModalKeydown(e) {
+        if (e.key === 'Escape') {
+          closeProjectModal();
+          return;
+        }
+        if (e.key === 'Tab') {
+          // Minimal focus trap: keep Tab/Shift+Tab cycling inside the panel.
+          var focusable = Array.prototype.slice.call(
+            projectModal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])')
+          ).filter(function (el) { return !el.disabled && el.offsetParent !== null; });
+          if (!focusable.length) return;
+          var first = focusable[0];
+          var last = focusable[focusable.length - 1];
+          if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
+        }
+      }
+
+      function openProjectModal(index) {
+        modalLastFocused = document.activeElement;
+        fillProjectModal(index);
+        setWorkIndex(index);
+        pauseWorkAutoplay();
+
+        projectModal.hidden = false;
+        void projectModal.offsetWidth; // force reflow so the entrance transition runs
+        projectModal.classList.add('is-open');
+        document.documentElement.classList.add('modal-open');
+
+        var closeBtn = projectModal.querySelector('.project-modal-close');
+        if (closeBtn) closeBtn.focus();
+        document.addEventListener('keydown', onModalKeydown);
+      }
+
+      function closeProjectModal() {
+        projectModal.classList.remove('is-open');
+        document.documentElement.classList.remove('modal-open');
+        document.removeEventListener('keydown', onModalKeydown);
+        scheduleWorkResume();
+
+        var finishClose = function () { projectModal.hidden = true; };
+        if (prefersReducedMotion) {
+          finishClose();
+        } else {
+          setTimeout(finishClose, 320);
+        }
+
+        if (modalLastFocused && typeof modalLastFocused.focus === 'function') modalLastFocused.focus();
+      }
+
+      openTriggers.forEach(function (trigger) {
+        trigger.addEventListener('click', function () {
+          var slide = trigger.closest('.work-slide');
+          var index = slide ? workSlides.indexOf(slide) : workActiveIndex;
+          openProjectModal(index);
+        });
+      });
+
+      modalCloseEls.forEach(function (el) {
+        el.addEventListener('click', closeProjectModal);
+      });
+
+      if (modalPrevBtn) {
+        modalPrevBtn.addEventListener('click', function () {
+          var i = (workActiveIndex - 1 + workCount) % workCount;
+          setWorkIndex(i);
+          fillProjectModal(i);
+        });
+      }
+      if (modalNextBtn) {
+        modalNextBtn.addEventListener('click', function () {
+          var i = (workActiveIndex + 1) % workCount;
+          setWorkIndex(i);
+          fillProjectModal(i);
+        });
+      }
+    }
   }
 
   /* -----------------------------------------------------------
@@ -301,7 +423,76 @@
   }
 
   /* -----------------------------------------------------------
-   * 5) Sticky header — cross-fades in the light/scrolled header style the
+   * 5) Hero stats — animated counters. Each .hero-stat-value already holds
+   *    its real final text ("+120", "97%", …) so the markup degrades
+   *    correctly with no JS/no IntersectionObserver; here that text is
+   *    parsed once into a leading non-digit prefix, the number, and a
+   *    trailing non-digit suffix, the display is reset to zero, and the
+   *    number counts up to its real value (only the digits animate — the
+   *    "+"/"%" stay fixed) once the stats row scrolls into view. Runs once
+   *    per page load and is skipped entirely under reduced motion.
+   * ----------------------------------------------------------- */
+  (function heroStatsCounters() {
+    var statValues = Array.prototype.slice.call(document.querySelectorAll('.hero-stat-value'));
+    if (!statValues.length) return;
+
+    var counters = statValues.map(function (el) {
+      var match = /^(\D*)(\d+)(\D*)$/.exec(el.textContent.trim());
+      if (!match) return null;
+      return { el: el, prefix: match[1], target: parseInt(match[2], 10), suffix: match[3] };
+    }).filter(Boolean);
+    if (!counters.length) return;
+
+    if (prefersReducedMotion) return; // final values already sit in the markup — nothing to do.
+
+    // Zero out the display up front (before anything is visible/observed)
+    // so there is a real "0 -> final value" count to see once triggered.
+    counters.forEach(function (c) { c.el.textContent = c.prefix + '0' + c.suffix; });
+
+    var DURATION = 1700; // ms — within the requested 1.5-2s window.
+    // easeOutCubic: fast start, gentle, premium settle — no bounce/overshoot.
+    function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+
+    function runCounters() {
+      var start = null;
+      function tick(now) {
+        if (start === null) start = now;
+        var progress = Math.min((now - start) / DURATION, 1);
+        var eased = easeOutCubic(progress);
+        counters.forEach(function (c) {
+          var value = Math.round(c.target * eased);
+          c.el.textContent = c.prefix + value + c.suffix;
+        });
+        if (progress < 1) {
+          requestAnimationFrame(tick);
+        } else {
+          // Land exactly on the authored target, sidestepping any float/round drift.
+          counters.forEach(function (c) { c.el.textContent = c.prefix + c.target + c.suffix; });
+        }
+      }
+      requestAnimationFrame(tick);
+    }
+
+    var statsRow = document.querySelector('.hero-stats');
+    if (!statsRow) { runCounters(); return; }
+
+    if ('IntersectionObserver' in window) {
+      var statsObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            statsObserver.unobserve(entry.target);
+            runCounters();
+          }
+        });
+      }, { threshold: 0.35 });
+      statsObserver.observe(statsRow);
+    } else {
+      runCounters();
+    }
+  })();
+
+  /* -----------------------------------------------------------
+   * 6) Sticky header — cross-fades in the light/scrolled header style the
    *    instant the page scrolls even slightly. Uses an IntersectionObserver
    *    on a zero-size sentinel at the very top of the page instead of a
    *    scroll listener, so there's no per-frame scroll handler running —
@@ -329,7 +520,7 @@
   }
 
   /* -----------------------------------------------------------
-   * 6) Navigation active state — marks whichever nav link matches the
+   * 7) Navigation active state — marks whichever nav link matches the
    *    current page/section with .is-active (styled in style.css). Driven
    *    entirely by <body data-page="home|join-team|start-project">, so it
    *    works consistently across the whole site without hard-coding any
