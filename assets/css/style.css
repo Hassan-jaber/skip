@@ -500,7 +500,10 @@ body.nav-open .mmenu__nav a{animation:mIn .6s var(--ease-out) forwards;
 
 /* --------------------------------------------------------------- reveals  */
 .js .rv{opacity:0;transform:translateY(22px);transition:opacity .85s var(--ease-out),transform .85s var(--ease-out)}
-.js .rv.in{opacity:1;transform:none}
+.js .rv.in{opacity:1;transform:none;}
+.shead > .rv.in{
+  margin: 0 auto;
+}
 .js .rv[data-d="1"]{transition-delay:.08s}
 .js .rv[data-d="2"]{transition-delay:.16s}
 .js .rv[data-d="3"]{transition-delay:.24s}
